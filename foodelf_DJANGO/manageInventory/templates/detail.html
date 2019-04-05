@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Preferences Output</title>
+    </head>
+    <body>
+        <h1>Preferences</h1><br>
+        
+        <form action="{% url 'manageInventory:prefOut' %}" method="POST">
+            {% csrf_token %}
+            {{form}}
+            
+            <button type="submit">Submit</button>
+        </form>
+        
+    </body>
+    
+</html>

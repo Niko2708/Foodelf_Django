@@ -1,0 +1,33 @@
+<!--<!DOCTYPE html>-->
+{% load static%}
+{%load humanize%}
+<html lang="en">
+    <head>
+        <title>FoodELF_Menu:JasperDeli</title>
+        <link rel="stylesheet" type="text/css" href="{% static "manageInventory/css/mainInventory.css" %} ">
+    </head>
+    <body>
+        <h1>MENU</h1>
+        <table width="60%" border="1" cellpadding="5" >
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>UNITS</th>
+                <th>PRICE PER UNIT</th>
+                <th>SAFETY STOCK</th>
+                <th>DATE PURCHASED</th>
+            </tr>
+            {% for item in inventory %}
+                <tr>
+                    <td>{{item.inventory_id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.units}}</td>
+                    <td>$ {{item.price_per_unit|floatformat:2}}</td>
+                    <td>{{item.safety_stock}}</td>
+                    <td>{{item.date_purchased}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {#<button type="button" class="abs_btn">Im Absolute BABY!!!</button>#}
+    </body>
+</html>
