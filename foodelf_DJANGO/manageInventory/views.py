@@ -80,4 +80,23 @@ def prefOut(request):
                 y_items.append(Item.objects.get(pk=id_of_item))
             
             context = {"output":y_items}
-            return render(request,"netOutput.html",context)    
+            return render(request,"netOutput.html",context)  
+
+def testComms(request):
+   if request.method == "GET":
+       num = random.randint(100,500)
+       num = str(num)
+       char = random.choice(["A","B","C","D","E","F"])
+       code = char + num
+       return HttpResponse(code,content_type="text/plain")
+
+def testJSON(request):
+   if request.method == "GET":
+       json_dict = {}
+       for item in list(Item.objects.all()):
+           json_dict.update({(f'Item {item.id}'):{
+                             "Item Name":item.item_name,
+                             "Price":item.price,
+                             "Ingredients":item.ingredients}})
+
+       return JsonResponse(json_dict)
