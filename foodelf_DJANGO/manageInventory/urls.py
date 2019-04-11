@@ -10,5 +10,5 @@ urlpatterns = [
         path('outputForm/', views.prefOut, name='prefOut'),
         path('testComms/', views.testComms, name='testComms'),
         path('testJSON/', views.testJSON, name='testJSON'),
-
+        path('testPOST/', views.testPOST, name='testPOST'),
 ]

@@ -100,3 +100,18 @@ def testJSON(request):
                              "Ingredients":item.ingredients}})
 
        return JsonResponse(json_dict)
+
+@csrf_exempt
+def testPOST(request):
+    #if request.is_ajax():
+        #if request.method == "POST":
+            #print(f'Raw Data: {request.body}')
+    if request.method == "POST":
+        #json_data = json.loads(request.body) # request.raw_post_data w/ Django < 1.4
+        try:
+            #data = json_data['data']
+            print(json.loads(request.body.decode('UTF-8')))
+        except KeyError:
+            return HttpResponseServerError("Malformed data!")   
+    return JsonResponse({"Hey Cutie!":"I got your data"})
+
